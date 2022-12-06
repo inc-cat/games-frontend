@@ -1,26 +1,29 @@
+// Utils
 import { individualReview } from "./api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export default function Review (props) {
     let { review_id } = useParams()
-    const [reviewLook, setReviewLook] = useState([])
+    const [reviewLook, setReviewLook] = useState({})
+    const [errorHandle, setErrorHandle] = useState(false)
+
     useEffect(function () {
         individualReview(review_id)
         .then(function (data) {
             setReviewLook(data)
             console.log(data)
-        }).catch((err) => {
-        console.log(err.response.status);
-        if (err.response.status === 400) {
-          return (
-            <body>
-              <p>400!</p>
-            </body>
-          );
-        }
-      });
-  }, [setReviewLook]);
+        }).catch(function (err) {
+            console.log(err.response.status);
+            if (err.response.status === 400) {
+                setErrorHandle(true);
+            }
+        });
+  }, [review_id]);
+
+  if (errorHandle) {
+    return <body>400!</body>
+  }
 
   
   console.log(reviewLook)
