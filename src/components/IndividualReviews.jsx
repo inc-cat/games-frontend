@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export default function Review (props) {
-    let { review_id } = useParams()
+    const { review_id } = useParams()
     const [reviewLook, setReviewLook] = useState({})
     const [errorHandle, setErrorHandle] = useState(false)
 

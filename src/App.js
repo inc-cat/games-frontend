@@ -9,7 +9,7 @@ import AllReviews from './components/AllReviews';
 import { allReviews } from "./components/api";
 import Reviews from './components/AllReviews';
 import Review from './components/IndividualReviews';
-import ReviewCommentID from './components/ReviewCommentID';
+import ReviewCommID from './components/ReviewCommentID';
 
 
 
@@ -22,7 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Reviews />} />
         <Route path="/:review_id" element={<Review />} />
-        <Route path="/:review_id/comments" element={<ReviewCommentID />} />
+        <Route path="/:review_id/comments" element={<ReviewCommID />} />
       </Routes>
     </BrowserRouter>
   );

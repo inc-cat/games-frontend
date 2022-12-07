@@ -13,7 +13,12 @@ export function allReviews() {
 
 export function individualReview(id) {
   return api.get(`/reviews/${id}`).then((res) => {
-    // console.log(res.data.reviews)
     return res.data.reviews;
+  });
+}
+
+export function individualCommentID(id) {
+  return api.get(`/reviews/${id}/comments`).then((res) => {
+    return res.data;
   });
 }
