@@ -2,11 +2,14 @@
 import { individualReview } from "./api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import ReviewCommID from "./ReviewCommentID";
+import PostComment from "./PostComment";
 
 export default function Review (props) {
-    let { review_id } = useParams()
+    const { review_id } = useParams()
     const [reviewLook, setReviewLook] = useState({})
     const [errorHandle, setErrorHandle] = useState(false)
+    const [commentCount, setCommentCount] = useState(0)
 
     useEffect(function () {
         individualReview(review_id)
@@ -34,7 +37,10 @@ export default function Review (props) {
     <p>{reviewLook.review_body}</p>
     <img src={reviewLook.review_img_url}></img>
     <p>{reviewLook.designer}</p>
+
+    <ReviewCommID commentCount={commentCount}></ReviewCommID>
+    <PostComment setCommentCount={setCommentCount}></PostComment>
   </div>
-  )
+   )
 
 }
