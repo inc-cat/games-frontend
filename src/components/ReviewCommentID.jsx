@@ -3,7 +3,8 @@ import { individualCommentID } from "./api"
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-export default function ReviewCommID () {
+export default function ReviewCommID (props) {
+    console.log(props.commentCount, 'wat' - 1)
     const { review_id } = useParams()
     const [comments, setComments] = useState([])
     const [errorHandle, setErrorHandle] = useState(false)
@@ -12,19 +13,23 @@ export default function ReviewCommID () {
         individualCommentID(review_id)
         .then(function (data) {
             setComments(data.comments)
-            console.log(data)
         }).catch(function (err) {
             if (err.response.status === 400) {
                 setErrorHandle(true)
             }
         })
-    }, [review_id])
+    }, [review_id, props.commentCount])
+
 
     if (errorHandle) {
         return <h1>400</h1>
     }
 
-    console.log(comments)
+
+    const votesPlus1 = function (votes) {
+        return votes ++
+    }
+
 
     return (<ul className="comment-container">
         {comments.map(function (comment) {
@@ -33,6 +38,7 @@ export default function ReviewCommID () {
                 <h3>{comment.comment_id}</h3>
                 <h4>{comment.body}</h4>
                 <p>{comment.author}</p>
+                <button onclick={votesPlus1(comment.votes)}>{comment.votes} 👍 </button>
                 </li>
             )
         })}

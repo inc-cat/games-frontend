@@ -10,6 +10,7 @@ export default function PostComment (props) {
     const { review_id } = useParams()
     const [correct, setCorrect] = useState(true)
     const [pass, setPass] = useState(true)
+    
 
 
 
@@ -25,6 +26,11 @@ export default function PostComment (props) {
         const inputObj = {username: authorz, body: body}
         console.log(review_id)
         postCommentToReview(review_id, inputObj)
+        .then(function () {
+            props.setCommentCount(function(current) {
+                return current + 1              
+            })
+        })
         
         commentAuthorRef.current.value = ''
         commentBodyRef.current.value = ''

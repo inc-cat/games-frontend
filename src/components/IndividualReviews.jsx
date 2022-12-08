@@ -9,6 +9,7 @@ export default function Review (props) {
     const { review_id } = useParams()
     const [reviewLook, setReviewLook] = useState({})
     const [errorHandle, setErrorHandle] = useState(false)
+    const [commentCount, setCommentCount] = useState(0)
 
     useEffect(function () {
         individualReview(review_id)
@@ -37,9 +38,9 @@ export default function Review (props) {
     <img src={reviewLook.review_img_url}></img>
     <p>{reviewLook.designer}</p>
 
-    <ReviewCommID></ReviewCommID>
-    <PostComment></PostComment>
+    <ReviewCommID commentCount={commentCount}></ReviewCommID>
+    <PostComment setCommentCount={setCommentCount}></PostComment>
   </div>
-  )
+   )
 
 }
