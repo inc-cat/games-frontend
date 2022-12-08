@@ -2,6 +2,8 @@
 import { individualReview } from "./api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import ReviewCommID from "./ReviewCommentID";
+import PostComment from "./PostComment";
 
 export default function Review (props) {
     const { review_id } = useParams()
@@ -34,6 +36,9 @@ export default function Review (props) {
     <p>{reviewLook.review_body}</p>
     <img src={reviewLook.review_img_url}></img>
     <p>{reviewLook.designer}</p>
+
+    <ReviewCommID></ReviewCommID>
+    <PostComment></PostComment>
   </div>
   )
 

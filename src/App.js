@@ -1,15 +1,16 @@
 // Utilities
-import './utils/App.css'; import {
+import './utils/App.css';
+import {
   BrowserRouter, Route, Link, Routes, Outlet, NavLink, useParams, useNavigate
 } from "react-router-dom";
 import { useState } from 'react'
 
 // Components
-import AllReviews from './components/AllReviews';
-import { allReviews } from "./components/api";
 import Reviews from './components/AllReviews';
 import Review from './components/IndividualReviews';
 import ReviewCommID from './components/ReviewCommentID';
+import PostComment from './components/PostComment';
+import Categories from './components/Categories';
 
 
 
@@ -19,11 +20,15 @@ function App() {
   // Render
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Reviews />} />
-        <Route path="/:review_id" element={<Review />} />
-        <Route path="/:review_id/comments" element={<ReviewCommID />} />
-      </Routes>
+      {<Categories />}
+      <div>
+        <Routes>
+          <Route path="/" element={<Reviews />} />
+          <Route path="/review/:review_id" element={<Review />} />
+          <Route path="/review/:review_id/comments" element={<ReviewCommID />} />
+          <Route path="/review/:review_id/test" element={<PostComment />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

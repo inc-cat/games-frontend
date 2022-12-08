@@ -22,3 +22,11 @@ export function individualCommentID(id) {
     return res.data;
   });
 }
+
+export function postCommentToReview(id, obj) {
+  return api.post(`/reviews/${id}/comments`, obj)
+}
+
+export function getCategories() {
+  return api.get('/categories')
+}

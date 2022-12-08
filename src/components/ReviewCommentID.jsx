@@ -3,9 +3,9 @@ import { individualCommentID } from "./api"
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-export default function ReviewCommID (props) {
+export default function ReviewCommID () {
     const { review_id } = useParams()
-    const [comments, setComments] = useState({})
+    const [comments, setComments] = useState([])
     const [errorHandle, setErrorHandle] = useState(false)
 
     useEffect(function () {
