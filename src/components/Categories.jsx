@@ -16,11 +16,6 @@ export default function Categories () {
         })
     }, [])
 
-// return <ul>
-//     {categories.map(function (category) {
-//         return <li>{category}</li>
-//     })}
-// </ul>
 
 
 return <nav>

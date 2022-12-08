@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export default function ReviewCommID (props) {
-    console.log(props.commentCount, 'wat' - 1)
     const { review_id } = useParams()
     const [comments, setComments] = useState([])
     const [errorHandle, setErrorHandle] = useState(false)

@@ -24,7 +24,6 @@ export default function PostComment (props) {
             return
         }
         const inputObj = {username: authorz, body: body}
-        console.log(review_id)
         postCommentToReview(review_id, inputObj)
         .then(function () {
             props.setCommentCount(function(current) {
